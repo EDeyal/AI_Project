@@ -4,5 +4,9 @@ using UnityEngine;
 
 public abstract class BaseDriveState : BaseState
 {
-
+    public override void ExitState()
+    {
+        base.ExitState();
+        _spaceship.ReachedDestination = false;
+    }
 }

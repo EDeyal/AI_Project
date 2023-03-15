@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class FighterDriverState : BaseDriveState
 {
+    BaseState _nextState;
     public override BaseState RunCurrentState()
     {
-        Debug.Log("Driving");
-        return this;
+        if (!_spaceship.ReachedDestination)
+        {
+            _spaceship.MoveToLocation(StationsManager.Instance.GetNextStation(_spaceship,out BaseState nextState));
+            _nextState = nextState;
+            return this;
+        }
+        return _nextState;
     }
 }

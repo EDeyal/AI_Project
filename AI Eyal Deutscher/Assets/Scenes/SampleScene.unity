@@ -622,6 +622,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b63c258234233e241a606b94a2e502e7, type: 3}
+--- !u!1 &1688291198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1688291200}
+  - component: {fileID: 1688291199}
+  m_Layer: 0
+  m_Name: StationsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1688291199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688291198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ba020216b36f14087de54ff91e3cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingStation: {fileID: 0}
+  _repairStation: {fileID: 0}
+  _gasStation: {fileID: 0}
+  _shootingStationLine: []
+  _repairStationLine: []
+  _gasStationLine: []
+--- !u!4 &1688291200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688291198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3800597712837323167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -683,6 +733,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800597711923363138, guid: 8f09cc08caf17ff43985b900779cedb6,
+        type: 3}
+      propertyPath: _speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3800597711923363139, guid: 8f09cc08caf17ff43985b900779cedb6,
         type: 3}
