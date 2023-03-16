@@ -11,4 +11,9 @@ public class FighterDriverState : BaseDriveState
         }
         return _nextState;
     }
+    public override void ExitState()
+    {
+        base.ExitState();
+        _spaceship.IsWaiting = false;
+    }
 }
