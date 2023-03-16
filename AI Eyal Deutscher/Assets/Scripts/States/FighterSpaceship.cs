@@ -32,7 +32,8 @@ public class FighterSpaceship : BaseSpaceship
         }
         else
         {
-            UpdateStateMachine(FighterStateHandler.ReloadAmmunition);
+            //ReachedDestination = false;
+            UpdateStateMachine(FighterStateHandler.DriveState);
         }
     }
     private void Shoot()

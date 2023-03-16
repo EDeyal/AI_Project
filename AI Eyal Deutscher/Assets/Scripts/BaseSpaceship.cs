@@ -16,7 +16,18 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     protected bool _isWaiting;
 
     public SpaceshipType SpaceshipType => _spaceshipType;
-    public bool ReachedDestination { get => _reachedDestination; set => _reachedDestination = value; }
+    public bool ReachedDestination
+    {
+        get
+        {
+            return _reachedDestination;
+        }
+        set
+        {
+            _reachedDestination = value;
+            Debug.Log($"Reached Destination of {gameObject.name} is being changed to: {_reachedDestination}");
+        }
+    }
     public bool HasMalfunction => _hasMalfunction;
     public float CurrentFuel => _currentFuel;
     public bool IsWaiting { set => _isWaiting = value; }
@@ -53,7 +64,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
         }
         else
         {
-            _reachedDestination = true;
+            ReachedDestination = true;
         }
     }
     private void ReduceFuelAmount()
