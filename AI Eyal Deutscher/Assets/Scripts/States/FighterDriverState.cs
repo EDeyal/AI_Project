@@ -15,6 +15,6 @@ public class FighterDriverState : BaseDriveState
     {
         base.ExitState();
         _spaceship.IsWaiting = false;
-        //_spaceship.ReachedDestination = false;
+        _spaceship.ReachedDestination = false;
     }
 }

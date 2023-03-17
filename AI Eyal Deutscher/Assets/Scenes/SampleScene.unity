@@ -910,5 +910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Regular Car
       objectReference: {fileID: 0}
+    - target: {fileID: 4070979917214875674, guid: 8f09cc08caf17ff43985b900779cedb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f09cc08caf17ff43985b900779cedb6, type: 3}
