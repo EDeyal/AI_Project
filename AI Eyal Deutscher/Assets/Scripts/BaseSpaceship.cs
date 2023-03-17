@@ -9,6 +9,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     [SerializeField] float _movementOffset;
     [SerializeField] float _maxFuel;
     [SerializeField] float _malfunctionChance;
+    [SerializeField] float _repairTime;
     [SerializeField] SpaceshipType _spaceshipType;
     float _currentFuel;
     bool _reachedDestination;
@@ -70,6 +71,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     private void ReduceFuelAmount()
     {
         _currentFuel -= Time.deltaTime;
+        //Debug.Log("Current fuel is: " + CurrentFuel);
     }
     public void CheckValidation()
     {
@@ -82,6 +84,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
         {
             return;
         }
+        Debug.Log("Checking for malfunctions");
         int malfunctionChance = Random.Range(0, 100);
         if (malfunctionChance < _malfunctionChance)
         {
@@ -102,5 +105,40 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
         //shooter spaceship
         //mechanic spaceship
         //ammunition spaceship
+    }
+    public bool CheckIfFueledUp()
+    {
+        if (_currentFuel < _maxFuel)
+        {
+            return false;
+        }
+        Debug.Log("Fuel is Full");
+        return true;
+    }
+    public void RefuelSpaceship()
+    {
+        if (_isWaiting)
+        {
+            return;
+        }
+        _currentFuel++;
+        StartCoroutine(WaitOneSecond());
+    }
+
+    public void RepairVehicle()
+    {
+        //Debug.Log("Spaceship Trying to repair Malfunction");
+
+        if (_isWaiting)
+        { return; }
+        StartCoroutine(WaitForRepair());
+    }
+    protected IEnumerator WaitForRepair()
+    {
+        _isWaiting = true;
+        yield return new WaitForSeconds(_repairTime);
+        Debug.Log("VehicleRepaired");
+        _hasMalfunction = false;
+        _isWaiting = false;
     }
 }

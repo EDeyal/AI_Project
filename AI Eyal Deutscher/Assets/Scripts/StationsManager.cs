@@ -25,6 +25,7 @@ public class StationsManager : MonoSingleton<StationsManager>
         nextState = null;
         if (spaceship.HasMalfunction)
         {
+            Debug.Log("Spaceship Has Malfunction");
             TryAddToStation(_repairStationLine, spaceship);
             nextState = spaceship.StateHandler.RepairState;
             return _repairStation.position;
@@ -39,6 +40,7 @@ public class StationsManager : MonoSingleton<StationsManager>
             {
                 if (fighter.CurrentAmmunition <= 0)
                 {
+                    Debug.Log("Missing Ammo for Spaceship");
                     TryAddToStation(_ammunitionStationLine, fighter);
                     nextState = fighter.FighterStateHandler.ReloadAmmunition;
                     return _ammunitionStation.position;
@@ -49,6 +51,7 @@ public class StationsManager : MonoSingleton<StationsManager>
         //need to be changed by the distance from the gas station
         if (spaceship.CurrentFuel > 0)
         {
+            Debug.Log("Spaceship in functional state going to act");
             TryAddToStation(_shootingStationLine, spaceship);
             nextState = spaceship.StateHandler.ActionState;
             return _shootingStation.position;
@@ -56,14 +59,11 @@ public class StationsManager : MonoSingleton<StationsManager>
         //else we go to the fuel station
         else
         {
+            Debug.Log("Missing Fuel");
             TryAddToStation(_gasStationLine, spaceship);
             nextState = spaceship.StateHandler.FuelState;
             return _gasStation.position;
         }
-        //Debug.LogError("Station Manager Logic Bug");
-        //nextState = spaceship.StateHandler.IdleState;
-        //return Vector3.zero;
-
     }
 
     private bool TryAddToStation(List<BaseSpaceship> station, BaseSpaceship spaceship)

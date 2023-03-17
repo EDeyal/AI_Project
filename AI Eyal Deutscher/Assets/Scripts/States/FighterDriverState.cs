@@ -1,11 +1,11 @@
-public class FighterDriverState : BaseDriveState
+public class FighterDriverState : FighterBaseState
 {
     BaseState _nextState;
     public override BaseState RunCurrentState()
     {
-        if (!_spaceship.ReachedDestination)
+        if (!FighterStateHandler.Spaceship .ReachedDestination)
         {
-            _spaceship.MoveToLocation(StationsManager.Instance.GetNextStation(_spaceship,out BaseState nextState));
+            FighterStateHandler.Spaceship.MoveToLocation(StationsManager.Instance.GetNextStation(FighterStateHandler.Spaceship, out BaseState nextState));
             _nextState = nextState;
             return this;
         }
@@ -14,7 +14,6 @@ public class FighterDriverState : BaseDriveState
     public override void ExitState()
     {
         base.ExitState();
-        _spaceship.IsWaiting = false;
-        _spaceship.ReachedDestination = false;
+        FighterStateHandler.Spaceship.ReachedDestination = false;
     }
 }

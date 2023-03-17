@@ -36,4 +36,21 @@ public class FighterSpaceship : BaseSpaceship
         Instantiate(_ammoPrefab,transform,false);
         StartCoroutine(WaitOneSecond());
     }
+    public bool CheckIfAmmoIsFull()
+    {
+        if (_currentAmmunition<_maxAmmunition)
+        {
+            return false;
+        }
+        return true;
+    }
+    public void RefillAmmo()
+    {
+        if (_isWaiting)
+        {
+            return;
+        }
+        _currentAmmunition++;
+        StartCoroutine(WaitOneSecond());
+    }
 }

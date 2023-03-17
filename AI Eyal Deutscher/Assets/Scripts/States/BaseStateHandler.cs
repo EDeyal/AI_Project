@@ -10,19 +10,19 @@ public class BaseStateHandler : MonoBehaviour, ICheckValidation
     [SerializeField] BaseState _driveState;
 
     BaseState _currentState;
+
+    protected BaseSpaceship _spaceship;
+
     public BaseState CurrentState { get => _currentState; set => _currentState = value; }
     public BaseState ActionState => _actionState;
     public BaseState IdleState => _idleState;
     public BaseState FuelState => _fuelState;
     public BaseState RepairState => _repairState;
     public BaseState DriveState => _driveState;
+    public BaseSpaceship Spaceship => _spaceship;
     public void CacheShip(BaseSpaceship currentSpaceship)
     {
-        IdleState.CacheShip(currentSpaceship);
-        ActionState.CacheShip(currentSpaceship);
-        FuelState.CacheShip(currentSpaceship);
-        RepairState.CacheShip(currentSpaceship);
-        DriveState.CacheShip(currentSpaceship);
+        _spaceship = currentSpaceship;
     }
     public virtual void CheckValidation()
     {

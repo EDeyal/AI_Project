@@ -1,20 +1,12 @@
-using UnityEngine;
-
-public class ShootingState : BaseState
+public class ShootingState : FighterBaseState
 {
     public override BaseState RunCurrentState()
     {
-        if (_spaceship is FighterSpaceship fighter)
+        if (FighterStateHandler.FighterSpaceship.CurrentAmmunition > 0)
         {
-            if (fighter.CurrentAmmunition>0)
-            {
-                _spaceship.Act();
-                return this;
-
-            }
-            return _stateHandler.DriveState;
+            FighterStateHandler.FighterSpaceship.Act();
+            return this;
         }
-        Debug.LogError("Wrong Car is trying to shoot");
-        return _stateHandler.IdleState;
+        return _stateHandler.DriveState;
     }
 }

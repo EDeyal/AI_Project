@@ -836,11 +836,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fighter
       objectReference: {fileID: 0}
-    - target: {fileID: 6275986347918527252, guid: 62c5f8513ffe82e44bb03d5a0f99f526,
-        type: 3}
-      propertyPath: _maxAmmunition
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c5f8513ffe82e44bb03d5a0f99f526, type: 3}
 --- !u!1001 &3800597712837323167

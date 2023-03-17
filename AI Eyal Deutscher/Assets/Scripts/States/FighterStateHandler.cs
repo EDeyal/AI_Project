@@ -4,6 +4,7 @@ public class FighterStateHandler : BaseStateHandler
 {
     [SerializeField] BaseState _reloadAmmunition;
     public BaseState ReloadAmmunition => _reloadAmmunition;
+    public FighterSpaceship FighterSpaceship => Spaceship as FighterSpaceship;
     public override void CheckValidation()
     {
         base.CheckValidation();
