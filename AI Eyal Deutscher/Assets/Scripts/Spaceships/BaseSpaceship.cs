@@ -10,6 +10,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     [SerializeField] float _maxFuel;
     [SerializeField] float _malfunctionChance;
     [SerializeField] float _repairTime;
+    [SerializeField,Range(0,100)] float _lowFuelPrecentage;
     [SerializeField] SpaceshipType _spaceshipType;
     float _currentFuel;
     bool _reachedDestination;
@@ -114,6 +115,15 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
         }
         Debug.Log("Fuel is Full");
         return true;
+    }
+    public bool CheckIfLowFuel()
+    {
+        if (_currentFuel/_maxFuel*100 <= _lowFuelPrecentage)
+        {
+            Debug.Log(gameObject.name + " has low levels of fuel");
+            return true;
+        }
+        return false;
     }
     public void RefuelSpaceship()
     {

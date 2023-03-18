@@ -50,7 +50,16 @@ public class FighterSpaceship : BaseSpaceship
         {
             return;
         }
-        _currentAmmunition++;
+        if (StationsManager.Instance.AmmoInAmmunitionStation > 0)
+        {
+            StationsManager.Instance.AmmoInAmmunitionStation--;
+            _currentAmmunition++;
+        }
+        else
+        {
+            Debug.Log("Ammunition Station does not have enough Ammo");
+        }
         StartCoroutine(WaitOneSecond());
+
     }
 }

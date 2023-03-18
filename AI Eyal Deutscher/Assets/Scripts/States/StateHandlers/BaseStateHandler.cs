@@ -8,6 +8,7 @@ public class BaseStateHandler : MonoBehaviour, ICheckValidation
     [SerializeField] BaseState _fuelState;
     [SerializeField] BaseState _repairState;
     [SerializeField] BaseState _driveState;
+    [SerializeField] BaseState _stuckState;
 
     BaseState _currentState;
 
@@ -19,6 +20,7 @@ public class BaseStateHandler : MonoBehaviour, ICheckValidation
     public BaseState FuelState => _fuelState;
     public BaseState RepairState => _repairState;
     public BaseState DriveState => _driveState;
+    public BaseState StuckState => _stuckState;
     public BaseSpaceship Spaceship => _spaceship;
     public void CacheShip(BaseSpaceship currentSpaceship)
     {
