@@ -1269,6 +1269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MechanicSpaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 8723818080732439609, guid: 7fac51829828b6a479ffe12dfb93c4d5,
+        type: 3}
+      propertyPath: _speed
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fac51829828b6a479ffe12dfb93c4d5, type: 3}
 --- !u!1001 &2062410034

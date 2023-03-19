@@ -11,4 +11,15 @@ public class StuckState : BaseState
         }
         return this;
     }
+    public override void EnterState()
+    {
+        base.EnterState();
+        StationsManager.Instance.StuckCars.Add(_stateHandler.Spaceship);
+
+    }
+    public override void ExitState()
+    {
+        base.ExitState();
+        StationsManager.Instance.StuckCars.Remove(_stateHandler.Spaceship);
+    }
 }
