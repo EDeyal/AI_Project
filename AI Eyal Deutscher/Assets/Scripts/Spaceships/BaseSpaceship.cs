@@ -151,4 +151,18 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
         _hasMalfunction = false;
         _isWaiting = false;
     }
+    //Method for mechanics only will repair the vehicle on max fuel
+    public bool IsAddingFuel(float amount)
+    {
+        if (_currentFuel >= _maxFuel)
+        {
+            _hasMalfunction = false;
+            return false;
+        }
+        else
+        {
+            _currentFuel += amount;
+            return true;
+        }
+    }
 }

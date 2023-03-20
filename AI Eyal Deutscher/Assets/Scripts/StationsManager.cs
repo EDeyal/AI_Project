@@ -18,7 +18,7 @@ public class StationsManager : MonoSingleton<StationsManager>
     [SerializeField] List<BaseSpaceship> _stuckCars;
     [SerializeField] List<BaseSpaceship> _repairingCars;
     [SerializeField] float _ammoInAmmunitionStation;
-    public List<BaseSpaceship> StuckCars => _stuckCars;
+    public List<BaseSpaceship> StuckSpaceships => _stuckCars;
     public float AmmoInAmmunitionStation { get => _ammoInAmmunitionStation; set => _ammoInAmmunitionStation = value; }
 
     public Vector3 GetNextStation(BaseSpaceship spaceship, out BaseState nextState)
@@ -85,11 +85,11 @@ public class StationsManager : MonoSingleton<StationsManager>
         {
             if (_stuckCars.Count > 1)
             {
-                //if (!_repairingCars.Contains(spaceship))
-                //{
-                //    _repairingCars.Add(spaceship);
-                //}
-                return _stuckCars[0].transform.position;
+                if (spaceship is MechanicSpaceship mechanic)
+                {
+                    mechanic.StuckSpaceship = _stuckCars[0];
+                    return _stuckCars[0].transform.position;
+                }
             }
             return _repairStation.position;
         }

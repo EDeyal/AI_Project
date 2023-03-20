@@ -1,14 +1,14 @@
 using UnityEngine;
 public class MechanicStateHandler : BaseStateHandler
 {
-    [SerializeField] BaseState _loadExtraTank;
-    public BaseState LoadExtraTank => _loadExtraTank;
+    [SerializeField] BaseState _repairSpaceship;
+    public BaseState LoadExtraTank => _repairSpaceship;
     public MechanicSpaceship MechanicSpaceship => Spaceship as MechanicSpaceship;
     public override void CheckValidation()
     {
         base.CheckValidation();
-        if (_loadExtraTank == null)
-            throw new System.Exception("MechanicStateHandler has no load Extra Tank State");
+        if (_repairSpaceship == null)
+            throw new System.Exception("MechanicStateHandler has no load reapair spaceship State");
     }
     private void Update()
     {
