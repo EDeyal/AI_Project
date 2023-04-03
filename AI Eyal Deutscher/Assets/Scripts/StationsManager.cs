@@ -15,10 +15,11 @@ public class StationsManager : MonoSingleton<StationsManager>
     [SerializeField] Transform _ammunitionStation;
     [SerializeField] Transform _ammunitionWarehouse;
 
-    [SerializeField] List<BaseSpaceship> _stuckCars;
+    [SerializeField] List<BaseSpaceship> _stuckSpaceships;
     [SerializeField] List<BaseSpaceship> _repairingCars;
     [SerializeField] float _ammoInAmmunitionStation;
-    public List<BaseSpaceship> StuckSpaceships => _stuckCars;
+    [SerializeField] float _distanceOffsetFromStation = 0.1f;
+    public List<BaseSpaceship> StuckSpaceships => _stuckSpaceships;
     public float AmmoInAmmunitionStation { get => _ammoInAmmunitionStation; set => _ammoInAmmunitionStation = value; }
 
     public Vector3 GetNextStation(BaseSpaceship spaceship, out BaseState nextState)
@@ -83,13 +84,18 @@ public class StationsManager : MonoSingleton<StationsManager>
         }
         else
         {
-            if (_stuckCars.Count > 1)
+            if (_stuckSpaceships.Count > 0)
             {
                 if (spaceship is MechanicSpaceship mechanic)
                 {
-                    mechanic.StuckSpaceship = _stuckCars[0];
-                    return _stuckCars[0].transform.position;
+                    Debug.Log("Mechanic is needed");
+                    mechanic.StuckSpaceship = _stuckSpaceships[0];
+                    return _stuckSpaceships[0].transform.position;
                 }
+            }
+            if (Vector3.Distance(_repairStation.position, spaceship.transform.position) < _distanceOffsetFromStation) 
+            {
+                nextState = spaceship.StateHandler.IdleState;
             }
             return _repairStation.position;
         }

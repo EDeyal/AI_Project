@@ -147,7 +147,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     {
         _isWaiting = true;
         yield return new WaitForSeconds(_repairTime);
-        Debug.Log("VehicleRepaired");
+        Debug.Log(gameObject.name + " Vehicle Repaired");
         _hasMalfunction = false;
         _isWaiting = false;
     }

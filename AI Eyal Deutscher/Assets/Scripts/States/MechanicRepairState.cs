@@ -4,7 +4,7 @@ public class MechanicRepairState : MechanicBaseState
 {
     public override BaseState RunCurrentState()
     {
-        Debug.Log("Loading Fuel");
+        Debug.Log("Mechanic is repairing car");
         if (MechanicStateHandler.MechanicSpaceship.IsSpaceshipRepaired())
         {
             //spaceship is repaired

@@ -1055,9 +1055,10 @@ MonoBehaviour:
   _gasStation: {fileID: 1772517870}
   _ammunitionStation: {fileID: 1311462064}
   _ammunitionWarehouse: {fileID: 1291551874}
-  _stuckCars: []
+  _stuckSpaceships: []
   _repairingCars: []
   _ammoInAmmunitionStation: 0
+  _distanceOffsetFromStation: 0.1
 --- !u!4 &1688291200
 Transform:
   m_ObjectHideFlags: 0
