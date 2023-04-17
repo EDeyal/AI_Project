@@ -8,7 +8,7 @@ public class MechanicSpaceship : BaseSpaceship
 {
     public MechanicStateHandler MechanicStateHandler => StateHandler as MechanicStateHandler;
     public BaseSpaceship StuckSpaceship { set => _stuckSpaceship = value; }
-    float _maxFuelTankAmount;
+    [SerializeField] float _maxFuelTankAmount;
     float _currentFuelTankAmount;
     [SerializeField] float _loadAmount;
     [SerializeField] MechanicType _mechanicState;

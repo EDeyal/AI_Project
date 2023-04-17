@@ -2,7 +2,7 @@ using UnityEngine;
 public class MechanicStateHandler : BaseStateHandler
 {
     [SerializeField] BaseState _repairSpaceship;
-    public BaseState LoadExtraTank => _repairSpaceship;
+    public BaseState RepairSpaceship => _repairSpaceship;
     public MechanicSpaceship MechanicSpaceship => Spaceship as MechanicSpaceship;
     public override void CheckValidation()
     {

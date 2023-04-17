@@ -946,7 +946,7 @@ PrefabInstance:
     - target: {fileID: 3028282138299942085, guid: cd70b05a90943494ca98558b9193a9ad,
         type: 3}
       propertyPath: _lowFuelPrecentage
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3028282138299942085, guid: cd70b05a90943494ca98558b9193a9ad,
         type: 3}
@@ -1299,6 +1299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _loadAmount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723818080732439609, guid: 7fac51829828b6a479ffe12dfb93c4d5,
+        type: 3}
+      propertyPath: _maxFuelTankAmount
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fac51829828b6a479ffe12dfb93c4d5, type: 3}

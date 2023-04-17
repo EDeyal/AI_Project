@@ -90,6 +90,7 @@ public class StationsManager : MonoSingleton<StationsManager>
                 {
                     Debug.Log("Mechanic is needed");
                     mechanic.StuckSpaceship = _stuckSpaceships[0];
+                    nextState = mechanic.MechanicStateHandler.RepairSpaceship;
                     return _stuckSpaceships[0].transform.position;
                 }
             }
