@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MechanicSpaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 6878234483708412911, guid: 62c5f8513ffe82e44bb03d5a0f99f526,
+        type: 3}
+      propertyPath: m_text
+      value: Mechanic
+      objectReference: {fileID: 0}
     - target: {fileID: 7719033315259077196, guid: 62c5f8513ffe82e44bb03d5a0f99f526,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -80,6 +85,45 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4713743640282306257}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2024586856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263849233742758544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8290118caa2e2734f98bbd0fbdffd524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateHandler: {fileID: 918661836109372041}
+--- !u!114 &2024586857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263849233742758544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4d600a3442906409bef0bb15e8a8c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateHandler: {fileID: 918661836109372041}
+--- !u!114 &2024586858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263849233742758544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201181c8fb7aded47b97706074aa6831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateHandler: {fileID: 918661836109372041}
 --- !u!114 &178945250178454520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,12 +164,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingState: {fileID: 288913558950398291}
-  _idleState: {fileID: 288913558950398291}
-  _actionState: {fileID: 5593338889037914634}
+  _idleState: {fileID: 2024586856}
+  _actionState: {fileID: 2024586858}
   _fuelState: {fileID: 8270725756796172412}
   _repairState: {fileID: 8087562405635850058}
   _driveState: {fileID: 178945250178454520}
   _stuckState: {fileID: 3201250178607648011}
+  _repairSpaceship: {fileID: 2024586857}
 --- !u!114 &3201250178607648011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +181,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67a3dfaf1307a8e4686caa7130d5e3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateHandler: {fileID: 918661836109372041}
+--- !u!114 &5593338889037914634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263849233742758544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ec5b8db77c6144b99e8deb546da564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _stateHandler: {fileID: 918661836109372041}
@@ -178,27 +236,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateHandler: {fileID: 918661836109372041}
+  _spaceshipDataSO: {fileID: 11400000, guid: 8e852f7f130dadd41a758229ac2d01a9, type: 2}
   _rigidbody: {fileID: 8374973446371112035}
-  _speed: 30
   _movementOffset: 1
-  _maxFuel: 50
-  _malfunctionChance: 0
-  _repairTime: 2
-  _lowFuelPrecentage: 30
-  _spaceshipType: 2
---- !u!114 &5593338889037914634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5263849233742758544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ec5b8db77c6144b99e8deb546da564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateHandler: {fileID: 918661836109372041}
+  _mechanicState: 0
 --- !u!54 &8374973446371112035 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 3842543720982373042, guid: 62c5f8513ffe82e44bb03d5a0f99f526,

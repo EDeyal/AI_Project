@@ -6,8 +6,8 @@ public enum CarrierStateType
 }
 public class CarrierSpaceship : BaseSpaceship
 {
-    [SerializeField] float _maxCarryWeight;
-    [SerializeField] float _loadAmount = 1;
+    //[SerializeField] float _maxCarryWeight;
+    //[SerializeField] float _loadAmount = 1;
     CarrierStateType _carrierState;
     float _currentCarryWeight;
     public CarrierStateHandler CarrierStateHandler => StateHandler as CarrierStateHandler;
@@ -23,9 +23,9 @@ public class CarrierSpaceship : BaseSpaceship
         if(_isWaiting)
             return false;
 
-        if (_currentCarryWeight < _maxCarryWeight)
+        if (_currentCarryWeight < _spaceshipDataSO.MaxCarryWeight)
         {
-            _currentCarryWeight+= _loadAmount;
+            _currentCarryWeight+= _spaceshipDataSO.CarrierLoadAmount;
             StartCoroutine(WaitOneSecond());
             return false;
         }
@@ -39,8 +39,8 @@ public class CarrierSpaceship : BaseSpaceship
 
         if (_currentCarryWeight > 0)
         {
-            _currentCarryWeight-= _loadAmount;
-            StationsManager.Instance.AmmoInAmmunitionStation+=_loadAmount;
+            _currentCarryWeight-= _spaceshipDataSO.CarrierLoadAmount;
+            StationsManager.Instance.AmmoInAmmunitionStation+= _spaceshipDataSO.CarrierLoadAmount;
             StartCoroutine(WaitOneSecond());
             return false;
         }

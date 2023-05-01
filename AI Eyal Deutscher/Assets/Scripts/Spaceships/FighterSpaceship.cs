@@ -3,7 +3,7 @@ using UnityEngine;
 public class FighterSpaceship : BaseSpaceship
 {
     
-    [SerializeField] int _maxAmmunition;
+    //[SerializeField] int _maxAmmunition;
     int _currentAmmunition;
     [SerializeField] GameObject _ammoPrefab;
     public FighterStateHandler FighterStateHandler => StateHandler as FighterStateHandler;
@@ -11,7 +11,7 @@ public class FighterSpaceship : BaseSpaceship
     override protected void Awake()
     {
         base.Awake();
-        _currentAmmunition = _maxAmmunition;
+        _currentAmmunition = _spaceshipDataSO.MaxAmmo;
     }
     public override void Act()
     {
@@ -38,7 +38,7 @@ public class FighterSpaceship : BaseSpaceship
     }
     public bool CheckIfAmmoIsFull()
     {
-        if (_currentAmmunition<_maxAmmunition)
+        if (_currentAmmunition<_spaceshipDataSO.MaxAmmo)
         {
             return false;
         }

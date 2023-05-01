@@ -4,20 +4,20 @@ using UnityEngine;
 public class BaseSpaceship : MonoBehaviour, ICheckValidation
 {
     [SerializeField] BaseStateHandler _stateHandler;
+    [SerializeField] protected SpaceshipDataSO _spaceshipDataSO;
     [SerializeField] Rigidbody _rigidbody;
-    [SerializeField] float _speed;
+    //[SerializeField] float _speed;
     [SerializeField] float _movementOffset;
-    [SerializeField] float _maxFuel;
-    [SerializeField] float _malfunctionChance;
-    [SerializeField] float _repairTime;
-    [SerializeField,Range(0,100)] float _lowFuelPrecentage;
-    [SerializeField] SpaceshipType _spaceshipType;
+    //[SerializeField] float _maxFuel;
+    //[SerializeField] float _malfunctionChance;
+    //[SerializeField] float _repairTime;
+    //[SerializeField,Range(0,100)] float _lowFuelPrecentage;
+    //[SerializeField] SpaceshipType _spaceshipType;
     float _currentFuel;
     bool _reachedDestination;
     bool _hasMalfunction;
     protected bool _isWaiting;
-
-    public SpaceshipType SpaceshipType => _spaceshipType;
+    public SpaceshipType SpaceshipType => _spaceshipDataSO.SpaceshipType;
     public bool ReachedDestination
     {
         get
@@ -38,7 +38,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     {
         CheckValidation();
         _stateHandler.CacheShip(this);
-        _currentFuel = _maxFuel;
+        _currentFuel = _spaceshipDataSO.MaxFuel;
     }
     private void Update()
     {
@@ -58,7 +58,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     {
         if (Vector3.Distance(transform.position, targetLocation) > _movementOffset)
         {
-            Vector3 movementVector = Vector3.MoveTowards(transform.position, targetLocation, Time.deltaTime * _speed);
+            Vector3 movementVector = Vector3.MoveTowards(transform.position, targetLocation, Time.deltaTime * _spaceshipDataSO.Speed);
             transform.LookAt(targetLocation);
             //Vector3 movement = transform.position + targetLocation.normalized * Time.deltaTime * _speed;
             ReduceFuelAmount();
@@ -78,6 +78,8 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     {
         if (!_rigidbody)
             throw new System.Exception("BaseSpaceship has no rigidbody");
+        if (!_spaceshipDataSO)
+            throw new System.Exception("BaseSpaceship has no DataSO");
     }
     public void CheckForMalfunctions()
     {
@@ -87,7 +89,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
         }
         Debug.Log("Checking for malfunctions");
         int malfunctionChance = Random.Range(0, 100);
-        if (malfunctionChance < _malfunctionChance)
+        if (malfunctionChance < _spaceshipDataSO.MalfunctionChance)
         {
             _hasMalfunction = true;
         }
@@ -109,7 +111,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     }
     public bool CheckIfFueledUp()
     {
-        if (_currentFuel < _maxFuel)
+        if (_currentFuel < _spaceshipDataSO.MaxFuel)
         {
             return false;
         }
@@ -118,7 +120,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     }
     public bool CheckIfLowFuel()
     {
-        if (_currentFuel/_maxFuel*100 <= _lowFuelPrecentage)
+        if (_currentFuel/ _spaceshipDataSO .MaxFuel* 100 <= _spaceshipDataSO.LowFuelPrecentage)
         {
             Debug.Log(gameObject.name + " has low levels of fuel");
             return true;
@@ -146,7 +148,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     protected IEnumerator WaitForRepair()
     {
         _isWaiting = true;
-        yield return new WaitForSeconds(_repairTime);
+        yield return new WaitForSeconds(_spaceshipDataSO.RepairTime);
         Debug.Log(gameObject.name + " Vehicle Repaired");
         _hasMalfunction = false;
         _isWaiting = false;
@@ -154,7 +156,7 @@ public class BaseSpaceship : MonoBehaviour, ICheckValidation
     //Method for mechanics only will repair the vehicle on max fuel
     public bool IsAddingFuel(float amount)
     {
-        if (_currentFuel >= _maxFuel)
+        if (_currentFuel >= _spaceshipDataSO.MaxFuel)
         {
             _hasMalfunction = false;
             return false;

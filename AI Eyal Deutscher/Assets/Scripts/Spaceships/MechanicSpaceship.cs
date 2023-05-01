@@ -8,12 +8,13 @@ public class MechanicSpaceship : BaseSpaceship
 {
     public MechanicStateHandler MechanicStateHandler => StateHandler as MechanicStateHandler;
     public BaseSpaceship StuckSpaceship { set => _stuckSpaceship = value; }
-    [SerializeField] float _maxFuelTankAmount;
+    //[SerializeField] float _maxFuelTankAmount;
     float _currentFuelTankAmount;
-    [SerializeField] float _loadAmount;
+    //[SerializeField] float _loadAmount;
     [SerializeField] MechanicType _mechanicState;
     BaseSpaceship _stuckSpaceship;
     public MechanicType MechanicState => _mechanicState;
+    public float CurrentFuelTankAmount => _currentFuelTankAmount;
     public override void Act()
     {
         base.Act();
@@ -23,9 +24,9 @@ public class MechanicSpaceship : BaseSpaceship
         if (_isWaiting)
             return false;
 
-        if (_currentFuelTankAmount < _maxFuelTankAmount)
+        if (_currentFuelTankAmount < _spaceshipDataSO.MaxMechanicFuelTankAmount)
         {
-            _currentFuelTankAmount += _loadAmount;
+            _currentFuelTankAmount += _spaceshipDataSO.MechanicLoadAmount;
             StartCoroutine(WaitOneSecond());
             return false;
         }
@@ -43,8 +44,8 @@ public class MechanicSpaceship : BaseSpaceship
         }
         if (_currentFuelTankAmount > 0)
         {
-            _currentFuelTankAmount -= _loadAmount;
-            if (_stuckSpaceship.IsAddingFuel(_loadAmount))
+            _currentFuelTankAmount -= _spaceshipDataSO.MechanicLoadAmount;
+            if (_stuckSpaceship.IsAddingFuel(_spaceshipDataSO.MechanicLoadAmount))
             {
                 StartCoroutine(WaitOneSecond());
                 return false;

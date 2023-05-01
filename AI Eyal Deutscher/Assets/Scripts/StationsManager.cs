@@ -84,9 +84,13 @@ public class StationsManager : MonoSingleton<StationsManager>
         }
         else
         {
-            if (_stuckSpaceships.Count > 0)
+            if (spaceship is MechanicSpaceship mechanic)
             {
-                if (spaceship is MechanicSpaceship mechanic)
+                if (mechanic.CurrentFuelTankAmount <= 0)
+                {
+                    return _repairStation.position;
+                }
+                if (_stuckSpaceships.Count > 0)
                 {
                     Debug.Log("Mechanic is needed");
                     mechanic.StuckSpaceship = _stuckSpaceships[0];

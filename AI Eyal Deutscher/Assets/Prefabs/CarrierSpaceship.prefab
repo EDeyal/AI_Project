@@ -67,6 +67,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrierSpaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 6878234483708412911, guid: 62c5f8513ffe82e44bb03d5a0f99f526,
+        type: 3}
+      propertyPath: m_text
+      value: Carrier
+      objectReference: {fileID: 0}
     - target: {fileID: 7719033315259077196, guid: 62c5f8513ffe82e44bb03d5a0f99f526,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -151,15 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateHandler: {fileID: 3365075009485079895}
+  _spaceshipDataSO: {fileID: 11400000, guid: 1938080a770197d4aa7b03b15503fd2c, type: 2}
   _rigidbody: {fileID: 5568820099213034106}
-  _speed: 20
   _movementOffset: 1
-  _maxFuel: 100
-  _malfunctionChance: 2
-  _repairTime: 2
-  _lowFuelPrecentage: 10
-  _spaceshipType: 1
-  _maxCarryWeight: 5
 --- !u!114 &3365075009485079895
 MonoBehaviour:
   m_ObjectHideFlags: 0

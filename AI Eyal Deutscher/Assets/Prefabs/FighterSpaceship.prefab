@@ -101,15 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateHandler: {fileID: 7433698075834835743}
+  _spaceshipDataSO: {fileID: 11400000, guid: 057acfec8b56534479f3948605c0ff72, type: 2}
   _rigidbody: {fileID: 7623063441833357841}
-  _speed: 100
   _movementOffset: 1
-  _maxFuel: 50
-  _malfunctionChance: 1
-  _repairTime: 0
-  _lowFuelPrecentage: 0
-  _spaceshipType: 0
-  _maxAmmunition: 5
   _ammoPrefab: {fileID: 3538963335139923273, guid: db53820daa0b18242a94ad2c38b21fbd,
     type: 3}
 --- !u!114 &711844402286517371
@@ -125,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateHandler: {fileID: 7433698075834835743}
-  _idleTime: 0
+  _idleTime: 1
 --- !u!114 &713185718849284496
 MonoBehaviour:
   m_ObjectHideFlags: 0
